@@ -1,28 +1,65 @@
-import { useState } from 'react'
+import Hero from "./components/Hero";
+import Offerings from "./components/Offerings";
+import Gallery from "./components/Gallery";
+import Wisdom from "./components/Wisdom";
 
-function App() {
-  const [count, setCount] = useState(0)
-
+function Navbar() {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-purple-50 to-blue-50 flex items-center justify-center">
-      <div className="bg-white p-8 rounded-lg shadow-lg">
-        <h1 className="text-3xl font-bold text-gray-800 mb-4">
-          Vibe Coding Platform
-        </h1>
-        <p className="text-gray-600 mb-6">
-          Your AI-powered development environment
-        </p>
-        <div className="text-center">
-          <button
-            onClick={() => setCount(count + 1)}
-            className="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded"
-          >
-            Count is {count}
-          </button>
-        </div>
-      </div>
-    </div>
-  )
+    <header className="fixed inset-x-0 top-0 z-50 bg-white/70 backdrop-blur">
+      <nav className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
+        <a href="#home" className="font-display text-xl font-semibold text-indigo-900">
+          Sri Siddhi
+        </a>
+        <ul className="hidden items-center gap-6 text-sm font-medium text-slate-700 sm:flex">
+          <li>
+            <a className="hover:text-indigo-700" href="#offerings">Programs</a>
+          </li>
+          <li>
+            <a className="hover:text-indigo-700" href="#gallery">Media</a>
+          </li>
+          <li>
+            <a className="hover:text-indigo-700" href="#wisdom">Wisdom</a>
+          </li>
+        </ul>
+        <a
+          href="#offerings"
+          className="rounded-full bg-indigo-600 px-4 py-2 text-sm font-semibold text-white shadow hover:bg-indigo-700"
+        >
+          Join a Program
+        </a>
+      </nav>
+    </header>
+  );
 }
 
-export default App
+function Footer() {
+  return (
+    <footer className="bg-slate-950 py-12 text-slate-200">
+      <div className="mx-auto max-w-7xl px-6">
+        <div className="flex flex-col items-center justify-between gap-6 sm:flex-row">
+          <p className="text-sm">© {new Date().getFullYear()} Sri Siddhi. All rights reserved.</p>
+          <div className="flex items-center gap-4 text-sm">
+            <a href="#wisdom" className="hover:text-white">Teachings</a>
+            <a href="#offerings" className="hover:text-white">Programs</a>
+            <a href="#gallery" className="hover:text-white">Media</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+  );
+}
+
+export default function App() {
+  return (
+    <div className="min-h-screen scroll-smooth bg-white font-sans">
+      <Navbar />
+      <main className="pt-16">
+        <Hero />
+        <Offerings />
+        <Gallery />
+        <Wisdom />
+      </main>
+      <Footer />
+    </div>
+  );
+}
